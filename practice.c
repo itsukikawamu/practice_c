@@ -2,24 +2,25 @@
 #include <string.h>
 #include <ctype.h>
 
-int main(void)
+int main(int argc, char *argv[])
 {
-    printf("Before: ");
-    char str[50]; 
-    fgets(str, 50, stdin);
-    printf("After: ");
-    for (int i =0, n = strlen(str); i < n; i++)
+    if (argc == 2)
     {
-        if ( str[i] >= 'a' && str[i] <= 'z')
+        printf("After: ");
+        for (int i =0, n = strlen(argv[1]); i < n; i++)
         {
-            printf("%c", str[i] - 32);
+            printf("%c", toupper(argv[1][i]));
         }
-        else
-        {
-            printf("%c", str[i]);
-        }
+        printf("\n");
+        return 0;
     }
-    return 0;
+    else
+    {
+        printf("You missed an argument.\n");
+        return 1;
+    }
+    
+    
 }
 
 
