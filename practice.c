@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     // 引数が過少・過多なら大文字変換せず差し戻す
     else
     {
-        printf("Input an argument correctly.\n");
+        printf("Input one argument.\n");
         return 1;
     }
     
