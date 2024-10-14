@@ -1,29 +1,15 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(void)
 {
-    int size = 10;
-    int input[size];
-    int i=0;
-    printf("%d個の整数を入力してください。", size);
-    while ( i < size )
-    {
-        printf("%d個目の整数を入力してください: ", i+1);
-        scanf("%d", &input[i]);
-        i++;
-    }
+    char *str = malloc( sizeof(char) * 50 );
+    if (str == NULL) exit(1);
 
+    printf("文字列を入力してください。\n");
+    scanf("%s", str);
+    printf("%s\n", str);
 
-    int j=0;
-    int sum = 0;
-    while ( j < size )
-    {
-        sum += input[j];
-        j++;
-    }
-    float average = 0;
-    average = (float)sum / size;
-    printf("平均は%.3f", average);
-
-
+    free(str);
+    return 0;
 }
