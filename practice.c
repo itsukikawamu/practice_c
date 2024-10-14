@@ -2,17 +2,28 @@
 
 int main(void)
 {
-    int input;
-    printf("整数を入力してください: ");
-    scanf("%d", &input);
+    int size = 10;
+    int input[size];
+    int i=0;
+    printf("%d個の整数を入力してください。", size);
+    while ( i < size )
+    {
+        printf("%d個目の整数を入力してください: ", i+1);
+        scanf("%d", &input[i]);
+        i++;
+    }
 
-    if (input % 2 == 0)
+
+    int j=0;
+    int sum = 0;
+    while ( j < size )
     {
-        printf("偶数です。\n");
+        sum += input[j];
+        j++;
     }
-    else 
-    {
-        printf("奇数です。\n");
-    }
+    float average = 0;
+    average = (float)sum / size;
+    printf("平均は%.3f", average);
+
 
 }
