@@ -1,34 +1,33 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 int main(void)
 {
-    char *str = malloc( sizeof(char) * 51 );
-    if (str == NULL) exit(1);
-
-    printf("文字列を入力してください。(50文字まで)\n");
-    fgets(str, 50, stdin);
-
-    int count[10] = {0};
-    int i  = 0;
-    while (str[i] != '\0')
+    while (1)
     {
-        if (str[i] >= '0' && str[i] <= '9')
+        int num = 0;
+        char ch = '\n';
+        printf("0以上の数を入力してください:");
+        
+
+        if( scanf("%d%c", &num, &ch) == 2 && ch == '\n' && num>= 0)
         {
-            count[str[i]-'0']++;
+            
+            int i = 0;
+            int product = 1;
+            while ( i < num )
+            {
+                product *= i+1;
+                i++;
+                
+            }
+            printf("入力された数の階乗は %d\n", product);
+            break;
         }
-        i++;
-    }
-
-    int j = 0;
-    printf("各数字の出現回数\n");
-    while(j < 10)
-    {
-        printf("%d: %d回\n", j, count[j]);
-        j++;
-    }
-
-
-    free(str);
-    return 0;
+        else{
+            printf("無効な入力です。整数を入力してください\n");
+            while (getchar() != '\n');
+            
+        }
+    }  
+    return 0;  
 }
