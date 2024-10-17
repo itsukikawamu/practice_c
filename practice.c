@@ -1,33 +1,27 @@
 #include <stdio.h>
 
+long factorial(long n)
+{
+    if (n == 0){
+        return 1;
+    }
+    else{
+        return n * factorial(n - 1);
+    }
+}
+
 int main(void)
 {
-    while (1)
-    {
-        int num = 0;
-        char ch = '\n';
-        printf("0以上の数を入力してください:");
-        
+    long num;
+    printf("自然数を入力してください:");
+    
+    while ( scanf("%ld", &num) != 1 || num < 0){
+        printf("自然数を入力してください。");
+        while(getchar()!='\n');
+        scanf("%ld", &num);
+    }
+    num = factorial(num);
+    printf("%ld\n", num);
 
-        if( scanf("%d%c", &num, &ch) == 2 && ch == '\n' && num>= 0)
-        {
-            
-            int i = 0;
-            int product = 1;
-            while ( i < num )
-            {
-                product *= i+1;
-                i++;
-                
-            }
-            printf("入力された数の階乗は %d\n", product);
-            break;
-        }
-        else{
-            printf("無効な入力です。整数を入力してください\n");
-            while (getchar() != '\n');
-            
-        }
-    }  
-    return 0;  
+    return 0;
 }
