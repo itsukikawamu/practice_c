@@ -3,7 +3,8 @@
 #include <stdlib.h>
 
 
-int main(void){
+int main(){
+    
     typedef struct {
     char name[51];
     char age[4];
@@ -51,9 +52,21 @@ int main(void){
     }
 
     // データを表示
-    for (int j = 0; j < count; j++) {
-        printf("%-20s %-4s\n", members[j].name, members[j].age);
+    FILE *file = fopen("members.csv", "w");
+    if (file==NULL){
+        printf("ファイルの作成に失敗しました。\n");
+        free(members);
+        return 1;
     }
+    // メンバーデータを書き込む
+    for (int j = 0; j < count; j++) {
+        fprintf(file, "%s,%s\n", members[j].name, members[j].age);
+    }
+    // ファイルを閉じる
+    fclose(file);
+    printf("データがmembers.csvに保存されました\n");
+
+
     // メモリの解放
     free(members);
 
