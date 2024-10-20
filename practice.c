@@ -3,23 +3,22 @@
 #include <stdlib.h>
 
 
-int main(){
-    
-    typedef struct {
-    char name[51];
-    char age[4];
-    }member;
+typedef struct member{
+char name[51];
+char age[5];
+struct member *next;
+}member;
 
-    member *members=NULL;
-    int count = 1;
-    // メモリの確保
-    members = malloc(sizeof(member) * count);
-    if (members == NULL) {
-        printf("メモリの確保に失敗しました\n");
-        return 1;  // エラー終了
+void freeMember(member *head){
+    member *tmp;
+    while (head != NULL){
+        tmp = head->next;
+        free(head);
+        head = tmp;
     }
-    strcpy(members[0].name, "NAME");
-    strcpy(members[0].age, "AGE");
+}
+
+int main(void){
 
     char buffer[100];
     int addnum;
@@ -27,40 +26,50 @@ int main(){
     printf("何人？: ");
     fgets(buffer, sizeof(buffer), stdin);
     buffer[strcspn(buffer, "\n")] = '\0';
-    addnum  = strtol(buffer, &endptr ,10);
+    addnum  = strtol(buffer, &endptr, 10);
     if (*endptr != '\0') {
     printf("無効な文字が含まれています。\n");
     return 1;
-}
+    }
 
-    for(int i=0; i<addnum; i++){
-        count++;
-        member *tmp = realloc(members, sizeof(member) * count);
-        if (tmp == NULL) {
-            printf("メモリの再確保に失敗しました\n");
-            free(members);  // 元のメモリを解放して終了
-            return 1;}
-        members = tmp; 
-
+    member *head = NULL;
+    member *n = NULL;
+    for(int i = 0; i < addnum; i++){
+        // メモリの確保
+        n = malloc(sizeof(member));
+        if (n == NULL) {
+            printf("メモリの確保に失敗しました\n");
+            freeMember(head);
+            return 1;  // エラー終了
+        }
+        
         printf("名前を入力してください: ");
-        fgets(members[count-1].name, sizeof(members[count-1].name), stdin);
-        members[count-1].name[strcspn(members[count-1].name, "\n")] = '\0'; 
+        fgets(n->name, sizeof(n->name), stdin);
+        n->name[strcspn(n->name, "\n")] = '\0'; 
 
         printf("年齢を入力してください: ");
-        fgets(members[count-1].age, sizeof(members[count-1].age), stdin);
-        members[count-1].age[strcspn(members[count-1].age, "\n")] = '\0'; 
+        fgets(n->age, sizeof(n->age), stdin);
+        n->age[strcspn(n->age, "\n")] = '\0'; 
+        n->next = head;
+        head = n; 
     }
 
     // データを表示
-    FILE *file = fopen("members.csv", "w");
-    if (file==NULL){
+    FILE *file = fopen("members.csv", "a+");
+    if (file == NULL){
         printf("ファイルの作成に失敗しました。\n");
-        free(members);
+        freeMember(head);
         return 1;
     }
+    fseek(file, 0, SEEK_END); // ファイルの最後に移動
+    long file_size = ftell(file);
+    if (file_size == 0) {
+    fprintf(file, "NAME, AGE\n"); // 新しいファイルであればヘッダーを書き込む
+    }
+    
     // メンバーデータを書き込む
-    for (int j = 0; j < count; j++) {
-        fprintf(file, "%s,%s\n", members[j].name, members[j].age);
+    for (member *tmp = head; tmp != NULL; tmp = tmp->next) {
+        fprintf(file, "%s,%s\n", tmp->name, tmp->age);
     }
     // ファイルを閉じる
     fclose(file);
@@ -68,7 +77,7 @@ int main(){
 
 
     // メモリの解放
-    free(members);
+    freeMember(head);
 
     return 0;
 }
