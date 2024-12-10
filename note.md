@@ -1,16 +1,16 @@
 # Cの書き方及びgitとgithubの使い方の練習
 ## 初期設定
 ```bash
-mkdir practice_c　#プロジェクトの作業ディレクトリをローカルに作成  
+mkdir practice_c  #プロジェクトの作業ディレクトリをローカルに作成  
 cd practice_c  
-git init　　#gitリポジトリとして初期化。.gitという隠しディレクトリが作成されGitの管理対象になる  
-mkdir src bin　　#src（ソースコード）とbin（コンパイル後の実行ファイル）の2つのサブディレクトリを作成します。これにより、ソースコードと実行ファイルを分けて管理します。  
+git init  #gitリポジトリとして初期化。.gitという隠しディレクトリが作成されGitの管理対象になる  
+mkdir src bin  #src（ソースコード）とbin（コンパイル後の実行ファイル）の2つのサブディレクトリを作成します。これにより、ソースコードと実行ファイルを分けて管理します。  
 touch README.md .gitignore  
-git remote add origin https://github.com/itsukikawamu/practice_c.git　#GitHubにリモートリポジトリを追加します。このリポジトリにコードをプッシュできるようになります。  
-echo 'bin/' >> .gitignore　　#.gitignoreファイルにbin/という行を追加し、binディレクトリ内のファイルをGitで管理しないように指定します。  
-git add .　　#変更されたファイルすべてをGitのインデックスに追加します。この時点ではまだコミットはされません。  
-git commnit -m "initial commit"　　#インデックスに追加された変更を「initial commit」というメッセージでコミットします。  
-git push -u origin master　　#ローカルのmasterブランチの変更をリモートリポジトリ（GitHub）にプッシュします。-uオプションは、今後のgit pushがこのリモートブランチを対象にするように設定します。  
+git remote add origin https://github.com/itsukikawamu/practice_c.git  #GitHubにリモートリポジトリを追加します。このリポジトリにコードをプッシュできるようになります。  
+echo 'bin/' >> .gitignore  #.gitignoreファイルにbin/という行を追加し、binディレクトリ内のファイルをGitで管理しないように指定します。  
+git add .　  #変更されたファイルすべてをGitのインデックスに追加します。この時点ではまだコミットはされません。  
+git commnit -m "initial commit"　  #インデックスに追加された変更を「initial commit」というメッセージでコミットします。  
+git push -u origin master  #ローカルのmasterブランチの変更をリモートリポジトリ（GitHub）にプッシュします。-uオプションは、今後のgit pushがこのリモートブランチを対象にするように設定します。  
 ```
 ## ファイルの編集
 ```
