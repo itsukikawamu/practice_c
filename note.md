@@ -35,8 +35,8 @@ git pull origin master　　
 ## マークダウンの書き方を練習
 ### 小見出し
 - **リスト**
-- ---
-- *リスト*  
+---
+> - *リスト*  
 - ***リストlist***  
 - [このページのリンク](https://github.com/itsukikawamu/practice_c/blob/master/note.md)
 
