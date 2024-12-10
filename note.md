@@ -11,8 +11,9 @@ echo 'bin/' >> .gitignore　　#.gitignoreファイルにbin/という行を追�
 git add .　　#変更されたファイルすべてをGitのインデックスに追加します。この時点ではまだコミットはされません。  
 git commnit -m "initial commit"　　#インデックスに追加された変更を「initial commit」というメッセージでコミットします。  
 git push -u origin master　　#ローカルのmasterブランチの変更をリモートリポジトリ（GitHub）にプッシュします。-uオプションは、今後のgit pushがこのリモートブランチを対象にするように設定します。  
-
+```
 ## ファイルの編集
+```
 vim src/hello.c  
 gcc src/hello.c -o bin/hello　　#src/hello.cをコンパイルして、実行ファイルbin/helloを生成します。gccはC言語のコンパイラで、-oオプションで出力ファイル名を指定します。  
 ./bin/hello  
