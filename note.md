@@ -37,7 +37,7 @@ git pull origin master　　
 - **リスト**  
 - *リスト*  
 - ***リストlist***  
-[これはメモです](https://github.com/itsukikawamu/practice_c/blob/master/note.md)
+[このページのリンク](https://github.com/itsukikawamu/practice_c/blob/master/note.md)
 
 
 
