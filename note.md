@@ -1,7 +1,8 @@
 # Cの書き方及びgitとgithubの使い方の練習
 ## 初期設定
-`mkdir practice_c`　#プロジェクトの作業ディレクトリをローカルに作成  
-`cd practice_c`  
+```
+mkdir practice_c　#プロジェクトの作業ディレクトリをローカルに作成  
+cd practice_c  
 git init　　#gitリポジトリとして初期化。.gitという隠しディレクトリが作成されGitの管理対象になる  
 mkdir src bin　　#src（ソースコード）とbin（コンパイル後の実行ファイル）の2つのサブディレクトリを作成します。これにより、ソースコードと実行ファイルを分けて管理します。  
 touch README.md .gitignore  
@@ -19,3 +20,4 @@ git add .
 git commit -m "hello,world!"  
 git push  
 git pull origin master　　リモートリポジトリ（GitHub）から最新の変更を取得する  
+```
