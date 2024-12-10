@@ -1,5 +1,5 @@
-Cの書き方及びgitとgithubの使い方の練習
-初期設定
+#Cの書き方及びgitとgithubの使い方の練習
+##初期設定
 mkdir practice_c　#プロジェクトの作業ディレクトリをローカルに作成
 cd practice_c
 git init　　#gitリポジトリとして初期化。.gitという隠しディレクトリが作成されGitの管理対象になる
@@ -11,7 +11,7 @@ git add .　　#変更されたファイルすべてをGitのインデックス�
 git commnit -m "initial commit"　　#インデックスに追加された変更を「initial commit」というメッセージでコミットします。
 git push -u origin master　　#ローカルのmasterブランチの変更をリモートリポジトリ（GitHub）にプッシュします。-uオプションは、今後のgit pushがこのリモートブランチを対象にするように設定します。
 
-ファイルの編集
+##ファイルの編集
 vim src/hello.c
 gcc src/hello.c -o bin/hello　　#src/hello.cをコンパイルして、実行ファイルbin/helloを生成します。gccはC言語のコンパイラで、-oオプションで出力ファイル名を指定します。
 ./bin/hello
