@@ -1,9 +1,9 @@
 # Cの書き方及びgitとgithubの使い方の練習
 ## 初期設定
-```
-mkdir practice_c　-プロジェクトの作業ディレクトリをローカルに作成  
+```bash
+mkdir practice_c　#プロジェクトの作業ディレクトリをローカルに作成  
 cd practice_c  
-git init　　-gitリポジトリとして初期化。.gitという隠しディレクトリが作成されGitの管理対象になる  
+git init　　#gitリポジトリとして初期化。.gitという隠しディレクトリが作成されGitの管理対象になる  
 mkdir src bin　　#src（ソースコード）とbin（コンパイル後の実行ファイル）の2つのサブディレクトリを作成します。これにより、ソースコードと実行ファイルを分けて管理します。  
 touch README.md .gitignore  
 git remote add origin https://github.com/itsukikawamu/practice_c.git　#GitHubにリモートリポジトリを追加します。このリポジトリにコードをプッシュできるようになります。  
